@@ -1,0 +1,15 @@
+
+#profile-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+    border: solid 5px white;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius:0% 5%;
+}
+
+#submit-button {
+    margin-bottom: 25px;
+}
