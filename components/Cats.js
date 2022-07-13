@@ -21,11 +21,32 @@ function Cat({ cat }) {
     const img = document.createElement('img');
     img.src = cat.imageUrl; //add imageUrl column to supabase
 
+
     const comment = document.createElement('p');
-    comment.textContent = cat.comment; //come back to tweak?
+    comment.textContent = cat.comments; //come back to tweak? needs to display all elements of array
 
-    li.append(name, img, comment);
+    li.append(name, img);
 
+    for (const comment of cat.comments) {
+        const p = document.createElement('p');
+        p.textContent = comment.content;
+        li.append(p);
+    }
+
+    const form = document.createElement('form');
+
+    const input = document.createElement('input');
+    const button = document.createElement('button');
+
+    form.append(input, button);
+
+    form.addEventListener('submit', (e) => {
+        // if !profile redirect
+        // if profile, add comment (input value) to comments
+    });
+
+    li.append(form);
+    
     return li;
 
 }
