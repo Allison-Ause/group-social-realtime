@@ -4,6 +4,7 @@ import createUser from './components/User.js';
 
 // State
 let user = null;
+let cats = [];
 
 // Action Handlers
 async function handlePageLoad() {
