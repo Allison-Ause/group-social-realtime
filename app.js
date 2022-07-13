@@ -1,4 +1,4 @@
-import { getUser, signOut } from './services/auth-service.js';
+import { getProfile, getUser, signOut } from './services/auth-service.js';
 import { protectPage } from './utils.js';
 import createUser from './components/User.js';
 import { getCatsWithComments } from './services/catalogue-service.js';
@@ -7,6 +7,7 @@ import createCats from './components/Cats.js';
 // State
 let user = null;
 let cats = [];
+let profile = null;
 
 // Action Handlers
 async function handlePageLoad() {
@@ -14,6 +15,7 @@ async function handlePageLoad() {
     protectPage(user);
 
     cats = await getCatsWithComments();
+    profile = await getProfile();
 
     display();
 }

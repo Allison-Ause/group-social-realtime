@@ -1,4 +1,4 @@
-import { client } from './client.js';
+import { checkResponse, client } from './client.js';
 
 export function getUser() {
     return client.auth.user();
@@ -14,4 +14,33 @@ export async function signIn(email, password) {
 
 export async function signOut() {
     return await client.auth.signOut();
+}
+
+export async function getProfile() {
+
+    const user = getUser();
+
+    const response = await client
+        .from('profiles')
+        .select()
+        .eq('id', user.id);
+    
+    const rows = checkResponse(response);
+    return rows[0] || null;
+
+}
+
+export async function updateProfile(profile) {
+    const response = await client
+        .from('profiles')
+        .upsert(profile)
+        .eq('id', profile.id)
+        .single();
+
+    return checkResponse(response);
+}
+
+export async function uploadAvatar() {
+    .from('profiles') //finish supabase selection
+    .
 }
