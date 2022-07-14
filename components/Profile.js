@@ -2,6 +2,8 @@ export default function createProfile(form, { handleUpdateProfile }) {
     const usernameInput = form.querySelector('input[name=user-name]');
     const avatarInput = form.querySelector('input[name=avatar]');
     const preview = form.querySelector('img');
+    preview.classList.add('preview');
+
 
     avatarInput.addEventListener('change', () => {
         const [file] = avatarInput.files;
