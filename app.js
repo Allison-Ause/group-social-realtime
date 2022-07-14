@@ -42,10 +42,10 @@ function display() {
 handlePageLoad();
 
 
-// profile set up
-    // uploading avatars to bucket
-    // confirm rls working
-    // redirect based on profile
-// event handlers
-// services functions
-// confirm display of comments
+
+// add Edit Profile button to pages
+
+// handle commenting functionality
+    // display
+    // realtime functionality based on user
+    // redirect based on profile (out of comments section)

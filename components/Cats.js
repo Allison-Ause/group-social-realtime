@@ -11,7 +11,7 @@ export default function createCats(root) {
     };
 }
 
-function Cat({ cat }) {
+function Cat({ cat, profile }) {
     const li = document.createElement('li');
     li.classList.add('cat');
 
@@ -36,12 +36,20 @@ function Cat({ cat }) {
     const form = document.createElement('form');
 
     const input = document.createElement('input');
+
     const button = document.createElement('button');
+    button.textContent = 'Comment';
 
     form.append(input, button);
 
     form.addEventListener('submit', (e) => {
-        // if !profile redirect
+        e.preventDefault();
+
+        if (!profile) {
+            location.replace('../profile-page');
+        }
+        
+        handleAddComment();
         // if profile, add comment (input value) to comments
     });
 
