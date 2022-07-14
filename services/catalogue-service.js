@@ -1,6 +1,9 @@
 import { getProfile } from './auth-service.js';
 import { checkResponse, client } from './client.js';
 
+let users = new Map();
+let cats = new Map();
+
 export async function getCatsWithComments() {
     const response = await client
         .from('cats')
@@ -12,6 +15,17 @@ export async function getCatsWithComments() {
     
 }
 
+export async function getComments() {
+    const response = await client
+        .from('comments')
+        .select(`*,
+        cats (*)
+        `);
+    
+    return checkResponse(response);
+}
+
+
 export function onComment(listener) {
     client
         .from('comments')
@@ -22,24 +36,64 @@ export function onComment(listener) {
             const cat = await getCatById(comment.cat_id);
             comment.cat = cat;
             comment.user = user;
-            // t.a. question: need to associate comment with cats
-                // can we associate comment with cat in Cats.js or does it all need to be in here?
-                // will separating it out override the realtime nature of the commenting?
+
             listener(comment);
         })
         .subscribe();
 }
 
 
-export async function addComment(content, cat, user) {
-    const response = await client
+export async function addComment(content) {
+    const response = await client //do we need this + cat, user parameters?)
         .from('comments')
         .insert({
-            user_id: user.id,
-            cat_id: cat.id,
+            // user_id: user.id, believed to be solved by onComment getIds
+            // cat_id: cat.id,
             content
         })
-        .single();
+        .single();   
     
-    
+    return checkResponse(response); //do we need this?
 }
+
+
+export async function getProfileById(id) {
+    if (users.has(id)) return users.get(id);
+
+    const { data, error } = await client
+        .from('profiles')
+        .select('*')
+        .eq('id', id)
+        .single();
+
+    if (error) {
+        //eslint-disable-next-line no-console
+        console.log(error);
+        return null;
+    }
+
+    users.set(id, data);
+
+    return data;
+}
+
+export async function getCatById(id) {
+    if (cats.has(id)) return cats.get(id);
+
+    const { data, error } = await client
+        .from('cats')
+        .select('*')
+        .eq('id', id)
+        .single();
+
+    if (error) {
+        //eslint-disable-next-line no-console
+        console.log(error);
+        return null;
+    }
+
+    cats.set(id, data);
+
+    return data;
+}
+

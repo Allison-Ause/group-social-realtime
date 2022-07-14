@@ -1,17 +1,18 @@
 
-export default function createCats(root) {
+export default function createCats(root, { profile, comments, handleAddComment }) {
     
     return ({ cats }) => {
         root.innerHTML = '';
 
         for (const cat of cats) {
-            const li = Cat({ cat });
+            const li = Cat({ cat, profile, comments, handleAddComment });
             root.append(li);
         }
     };
 }
 
-function Cat({ cat, profile }) {
+
+function Cat({ cat, profile, comments, handleAddComment }) {
     const li = document.createElement('li');
     li.classList.add('cat');
 
@@ -21,13 +22,9 @@ function Cat({ cat, profile }) {
     const img = document.createElement('img');
     img.src = cat.imageUrl; //add imageUrl column to supabase
 
-
-    const comment = document.createElement('p');
-    comment.textContent = cat.comments; //come back to tweak? needs to display all elements of array
-
     li.append(name, img);
 
-    for (const comment of cat.comments) {
+    for (const comment of comments) {
         const p = document.createElement('p');
         p.textContent = comment.content;
         li.append(p);
@@ -44,13 +41,13 @@ function Cat({ cat, profile }) {
 
     form.addEventListener('submit', (e) => {
         e.preventDefault();
-
+        console.log(profile);
         if (!profile) {
             location.replace('../profile-page');
         }
         
         handleAddComment(input.value);
-        // if profile, add comment (input value) to comments
+
     });
 
     li.append(form);
