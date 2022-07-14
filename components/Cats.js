@@ -23,12 +23,19 @@ function Cat({ cat, profile, comments, user, handleAddComment }) {
     name.textContent = cat.name;
 
     const img = document.createElement('img');
-    img.src = cat.imageUrl; //add imageUrl column to supabase
+    img.src = cat.imageUrl; 
+    img.classList.add('cat-img');
 
     li.append(name, img);
 
     for (const comment of comments) {
         if (comment.cat_id === cat.id) {
+
+            const div = document.createElement('div');
+            div.classList.add('user-display');
+
+            const fullComment = document.createElement('div');
+            fullComment.classList.add('full-comment');
 
             const userImg = document.createElement('img');
 
@@ -41,7 +48,10 @@ function Cat({ cat, profile, comments, user, handleAddComment }) {
 
             const p = document.createElement('p');
             p.textContent = comment.content;
-            li.append(userImg, span, p);
+
+            div.append(userImg, span);
+            fullComment.append(div, p);
+            li.append(fullComment);
         }
     }
 

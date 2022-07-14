@@ -56,13 +56,6 @@ handlePageLoad();
 
 
 
-//commenting issues:
-//new comments only appear on page load (realtime not working)
 
-
-// add Edit Profile button to pages
-
-// handle commenting functionality
-    // display
-    // realtime functionality based on user
-    // redirect based on profile (out of comments section)
+// move user styling to main
+// style cat cards so avatar+username are together & cute
