@@ -14,11 +14,13 @@ export async function getCatsWithComments() {
 
 export function onComment(listener) {
     client
-        .from('posts')
+        .from('comments')
         .on('INSERT', async (payload) => {
             console.log('change received', payload);
             const comment = payload.new;
-            const user = await getProfile(comment.user_id);
+            const user = await getProfileById(comment.user_id);
+            const cat = await getCatById(comment.cat_id);
+            comment.cat = cat;
             comment.user = user;
             // t.a. question: need to associate comment with cats
                 // can we associate comment with cat in Cats.js or does it all need to be in here?
