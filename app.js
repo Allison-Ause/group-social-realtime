@@ -35,7 +35,7 @@ const User = createUser(
 const Cats = createCats(document.querySelector('#cat-list'));
 
 function display() {
-    User({ user });
+    User({ user, profile });
     Cats({ cats });
 }
 
