@@ -20,21 +20,30 @@
 <body>
     <header>
         <!-- <img src="./assets/html_css_js.png"> -->
-        <h1>Cat-alogue!</h1>
+        <h1>Add A Cat!</h1>
         <div id="user"></div>
     </header>
 
     <main>
-        <h2 id="subheader">🖤  Leave a Compliment or Add A New Cat  🖤</h2>
-        <a id="add-cat" href="./add-cat-page">Add A New Cat</a>
-        <section>
-            <ul id="cat-list"></ul>
-        </section>
-
+        <form>
+            <h2 id="subheader">New Cat</h2>
+            <label>
+                name:
+                <input name="new-cat-name" required>
+            </label>
+            <div id="cat-image-info">
+                <label for="new-cat-image">
+                    upload an image:
+                </label>
+                <img>
+            </div>
+                <input type="file" name="new-cat-image" id="new-cat-image" required>
+            <button id="add-cat-button">Add Your Cat!</button>
+        </form>
     </main>
 
 
-    <script type="module" src="app.js"></script>
+    <script type="module" src="add-cat-page.js"></script>
 </body>
 
 </html>

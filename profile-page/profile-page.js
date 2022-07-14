@@ -48,7 +48,7 @@ const User = createUser(
 const Profile = createProfile(document.querySelector('form'), { handleUpdateProfile });
 
 function display() {
-    User({ user });
+    User({ user, profile });
     Profile({ user, profile });
 }
 

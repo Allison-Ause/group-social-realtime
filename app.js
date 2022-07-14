@@ -59,3 +59,12 @@ handlePageLoad();
 
 // move user styling to main
 // style cat cards so avatar+username are together & cute
+
+
+// add cats:
+    // services function(s)
+    // realtime functionality
+        // don't need to worry about profiles table, just cats (and maybe comments)
+    // handleAddCat function
+
+
