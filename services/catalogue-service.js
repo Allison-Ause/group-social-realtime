@@ -43,12 +43,12 @@ export function onComment(listener) {
 }
 
 
-export async function addComment(content) {
+export async function addComment(content, user, cat) {
     const response = await client //do we need this + cat, user parameters?)
         .from('comments')
         .insert({
-            // user_id: user.id, believed to be solved by onComment getIds
-            // cat_id: cat.id,
+            user_id: user.id,   //believed to be solved by onComment getIds
+            cat_id: cat.id,
             content
         })
         .single();   

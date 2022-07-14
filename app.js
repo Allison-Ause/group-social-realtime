@@ -36,8 +36,8 @@ async function handleSignOut() {
     signOut();
 }
 
-async function handleAddComment(content) {
-    await addComment(content);
+async function handleAddComment(content, user, cat) {
+    await addComment(content, user, cat);
     display();
 }
 
@@ -51,11 +51,15 @@ const Cats = createCats(document.querySelector('#cat-list'), { profile, comments
 
 function display() {
     User({ user, profile });
-    Cats({ cats });
+    Cats({ profile, comments, cats, user });
 }
 
 handlePageLoad();
 
+
+
+//commenting issues:
+//new comments only appear on page load (realtime not working)
 
 
 // add Edit Profile button to pages

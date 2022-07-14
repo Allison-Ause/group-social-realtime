@@ -1,18 +1,21 @@
 
-export default function createCats(root, { profile, comments, handleAddComment }) {
+export default function createCats(root, { handleAddComment }) {
     
-    return ({ cats }) => {
+    return ({ profile, comments, cats, user }) => {
         root.innerHTML = '';
 
         for (const cat of cats) {
-            const li = Cat({ cat, profile, comments, handleAddComment });
+            // const li = document.createElement('li');
+            //const li = Cat({ cat, profile, comments, user, handleAddComment });
+            const li = Cat({ cat, profile, comments, user, handleAddComment });
             root.append(li);
         }
     };
 }
 
 
-function Cat({ cat, profile, comments, handleAddComment }) {
+function Cat({ cat, profile, comments, user, handleAddComment }) {
+    
     const li = document.createElement('li');
     li.classList.add('cat');
 
@@ -25,9 +28,11 @@ function Cat({ cat, profile, comments, handleAddComment }) {
     li.append(name, img);
 
     for (const comment of comments) {
-        const p = document.createElement('p');
-        p.textContent = comment.content;
-        li.append(p);
+        if (comment.cat_id === cat.id) {
+            const p = document.createElement('p');
+            p.textContent = comment.content;
+            li.append(p);
+        }
     }
 
     const form = document.createElement('form');
@@ -46,7 +51,7 @@ function Cat({ cat, profile, comments, handleAddComment }) {
             location.replace('../profile-page');
         }
         
-        handleAddComment(input.value);
+        handleAddComment(input.value, user, cat);
 
     });
 
