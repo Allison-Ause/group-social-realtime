@@ -40,7 +40,31 @@ export async function updateProfile(profile) {
     return checkResponse(response);
 }
 
-export async function uploadAvatar() {
-    .from('profiles') //finish supabase selection
-    .
+const BUCKET_NAME = 'avatars';
+
+export async function uploadAvatar(userId, imageFile) {
+    
+    const imageName = `${userId}/${imageFile.name}`;
+
+    const bucket = client
+        .storage
+        .from(BUCKET_NAME);
+    
+    const { data, error } = await bucket
+        .upload(imageName, imageFile, {
+            cacheControl: '3600',
+            upsert: true
+        });
+    
+    if (error) {
+        // eslint-disable-next-line no-console
+        console.log(error);
+        return null;
+    }
+
+    const url = bucket.getPublicUrl(data.Key.replace(`${BUCKET_NAME}/`, '')).publicURL;
+
+    return url;
+    
+
 }

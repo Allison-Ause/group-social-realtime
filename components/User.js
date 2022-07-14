@@ -4,6 +4,9 @@ export default function createUser(root, { handleSignOut }) {
     return ({ user }) => {
         root.innerHTML = '';
 
+        //pass in profile on line 4
+        //set nameDisplay.textContent = profile.username
+        //display avatar (append it to root)
         if (user) {
             const nameDisplay = document.createElement('span');
             const username = user?.email.split('@')[0];

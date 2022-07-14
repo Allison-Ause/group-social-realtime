@@ -1,6 +1,7 @@
 import { getProfile, getUser, signOut, updateProfile, uploadAvatar } from '../services/auth-service.js';
 import { protectPage } from '../utils.js';
 import createUser from '../components/User.js';
+import createProfile from '../components/Profile.js';
 
 // State
 let user = null;
@@ -44,9 +45,11 @@ const User = createUser(
     { handleSignOut }
 );
 
+const Profile = createProfile(document.querySelector('form'), { handleUpdateProfile });
+
 function display() {
     User({ user });
-
+    Profile({ user, profile });
 }
 
 handlePageLoad();

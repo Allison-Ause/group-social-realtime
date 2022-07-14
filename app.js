@@ -17,6 +17,8 @@ async function handlePageLoad() {
     cats = await getCatsWithComments();
     profile = await getProfile();
 
+    console.log(profile);
+
     display();
 }
 

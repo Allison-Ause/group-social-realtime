@@ -1,9 +1,7 @@
-
-
-export default function createProfile(form) {
+export default function createProfile(form, { handleUpdateProfile }) {
+    const usernameInput = form.querySelector('input[name=user-name]');
     const avatarInput = form.querySelector('input[name=avatar]');
     const preview = form.querySelector('img');
-
 
     avatarInput.addEventListener('change', () => {
         const [file] = avatarInput.files;
@@ -20,5 +18,14 @@ export default function createProfile(form) {
         );
 
     });
-    return () => {};
+    return ({ user, profile }) => {
+        if (profile) {
+            const { username, avatar_url } = profile;
+            if (username) usernameInput.value = username;
+            if (avatar_url) preview.src = avatar_url;
+        }
+        else {
+            usernameInput.value = user.email.split('@')[0];
+        }
+    };
 }
