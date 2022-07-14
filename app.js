@@ -26,6 +26,11 @@ async function handleSignOut() {
     signOut();
 }
 
+async function handlAddComment(content) {
+
+
+}
+
 // Components 
 const User = createUser(
     document.querySelector('#user'),
@@ -46,6 +51,7 @@ handlePageLoad();
 // add Edit Profile button to pages
 
 // handle commenting functionality
+    //add second getProfile function to catalogue-service
     // display
     // realtime functionality based on user
     // redirect based on profile (out of comments section)

@@ -49,7 +49,7 @@ function Cat({ cat, profile }) {
             location.replace('../profile-page');
         }
         
-        handleAddComment();
+        handleAddComment(input.value, cat);
         // if profile, add comment (input value) to comments
     });
 
