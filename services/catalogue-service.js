@@ -45,16 +45,64 @@ export function onComment(listener) {
 
 
 export async function addComment(content, user, cat) {
-    const response = await client //do we need this + cat, user parameters?)
+    const response = await client 
         .from('comments')
         .insert({
-            user_id: user.id,   //believed to be solved by onComment getIds
+            user_id: user.id,  
             cat_id: cat.id,
             content
         })
         .single();   
     
-    return checkResponse(response); //do we need this?
+    return checkResponse(response); 
+}
+
+export function onCat() {
+    client
+        .from('cats')
+        .on('INSERT', async (payload) => {
+            // eslint-disable-next-line no-console
+            console.log('change received', payload);
+        }) //potentially we need more here?
+        .subscribe();
+}
+
+export async function addCat(newCat) {
+    const response = await client
+        .from('cats')
+        .insert(
+            newCat
+        )
+        .single();
+
+    return checkResponse(response);
+}
+
+const CAT_BUCKET = 'cats';
+
+export async function uploadCat(userId, imageFile) {
+
+    const catImageName = `cat/${userId}/${imageFile.name}`;
+
+    const catBucket = client
+        .storage
+        .from(CAT_BUCKET);
+
+    const { data, error } = await catBucket
+        .upload(catImageName, imageFile, {
+            cacheControl: '3600',
+            upsert: true
+        });
+
+    if (error) {
+            //eslint-disable-next-line no-console
+        console.log(error);
+        return null;
+    }
+
+    const url = catBucket.getPublicUrl(data.Key.replace(`${CAT_BUCKET}/`, '')).publicURL;
+
+    return url;
 }
 
 

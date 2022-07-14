@@ -62,9 +62,7 @@ handlePageLoad();
 
 
 // add cats:
-    // services function(s)
-    // realtime functionality
-        // don't need to worry about profiles table, just cats (and maybe comments)
     // handleAddCat function
+    // incorporate both uploadCat & addCat functions
 
 
