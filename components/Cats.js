@@ -29,9 +29,20 @@ function Cat({ cat, profile, comments, user, handleAddComment }) {
 
     for (const comment of comments) {
         if (comment.cat_id === cat.id) {
+
+            const userImg = document.createElement('img');
+
+            if (comment.profiles.avatar_url) {
+                userImg.src = comment.profiles.avatar_url; 
+                console.log(comment.profiles.avatar_url);
+            }
+
+            const span = document.createElement('span');
+            span.textContent = comment.profiles?.username;
+
             const p = document.createElement('p');
             p.textContent = comment.content;
-            li.append(p);
+            li.append(userImg, span, p);
         }
     }
 

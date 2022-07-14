@@ -19,7 +19,8 @@ export async function getComments() {
     const response = await client
         .from('comments')
         .select(`*,
-        cats (*)
+        cats (*),
+        profiles (*)
         `);
     
     return checkResponse(response);
@@ -32,10 +33,10 @@ export function onComment(listener) {
         .on('INSERT', async (payload) => {
             console.log('change received', payload);
             const comment = payload.new;
-            const user = await getProfileById(comment.user_id);
+            const profile = await getProfileById(comment.user_id);
             const cat = await getCatById(comment.cat_id);
             comment.cat = cat;
-            comment.user = user;
+            comment.profiles = profile;
 
             listener(comment);
         })

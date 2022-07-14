@@ -21,10 +21,9 @@ async function handlePageLoad() {
     comments = await getComments();
     profile = await getProfile();
 
-    console.log(profile);
-
     onComment(comment => {
         comments.unshift(comment);
+        console.log(comment);
         display();
     });
 
