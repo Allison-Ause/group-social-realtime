@@ -30,6 +30,10 @@ export default function createUser(root, { handleSignOut }) {
         signOutLink.addEventListener('click', () => {
             handleSignOut();
         });
+
+        const updateProfileLink = document.createElement('a');
+        updateProfileLink.textContent = 'Update Profile';
+        updateProfileLink.href = '../profile-page';
         
-        root.append(nameDisplay, avatarDisplay, signOutLink);
+        root.append(nameDisplay, avatarDisplay, signOutLink, updateProfileLink);
     };}

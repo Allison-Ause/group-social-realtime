@@ -1,14 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Henny+Penny&display=swap');
+
+header .avatar {
+    width: 50px;
+    flex-grow: 2;
+    margin-right: 20px;
+    margin-left: auto;
+    display: grid;
+}
+
+header h1 {
+    align-content: center;
+    border-bottom: 8px solid black;
+    font-family: 'Henny Penny', cursive;
+    font-size: 75px;
+    margin-top: 35px;
+    margin-left: 120px;
+}
+
+#subheader {
+    text-align: center;
+    margin-top: 55px;
+    font-size: 2em;
+}
 
 #cat-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     /* grid-auto-rows: 350px; */
     gap: 30px;
-    border: solid 5px grey;
+    border: solid 15px grey;
     padding: 15px;
     margin-top: 30px;
     width: 80%;
     margin: 50px auto;
+    background-image: url(../assets/cat-background.png);
+    padding: 85px;
 }
 
 .cat {
@@ -20,6 +46,7 @@
     background-color: whitesmoke;
     max-height: 500px;
     overflow: scroll;
+
 }
 
 .cat img {
