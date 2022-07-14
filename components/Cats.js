@@ -34,7 +34,6 @@ function Cat({ cat, profile, comments, user, handleAddComment }) {
 
             if (comment.profiles.avatar_url) {
                 userImg.src = comment.profiles.avatar_url; 
-                console.log(comment.profiles.avatar_url);
             }
 
             const span = document.createElement('span');
@@ -57,7 +56,6 @@ function Cat({ cat, profile, comments, user, handleAddComment }) {
 
     form.addEventListener('submit', (e) => {
         e.preventDefault();
-        console.log(profile);
         if (!profile) {
             location.replace('../profile-page');
         }

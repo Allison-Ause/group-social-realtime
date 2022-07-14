@@ -1,4 +1,3 @@
-import { getProfile } from './auth-service.js';
 import { checkResponse, client } from './client.js';
 
 let users = new Map();
@@ -31,6 +30,7 @@ export function onComment(listener) {
     client
         .from('comments')
         .on('INSERT', async (payload) => {
+            // eslint-disable-next-line no-console
             console.log('change received', payload);
             const comment = payload.new;
             const profile = await getProfileById(comment.user_id);

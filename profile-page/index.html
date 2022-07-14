@@ -18,7 +18,7 @@
 </head>
 
 <body>
-    <header>
+    <header id="profile-page-header">
         <!-- <img src="./assets/html_css_js.png"> -->
         <h1>Profile Page</h1>
         <div id="user"></div>
@@ -32,10 +32,14 @@
                 <input name="user-name">
             </label>
 
-            <label>
-                <input type="file" name="avatar" accept="image/*">
-            </label>
-            <img class="avatar">
+            <div id="avatar-info">
+                <label id="avatar-label" for="avatar">
+                    avatar:
+                </label>
+                <img>
+            </div>
+
+            <input type="file" id="avatar" name="avatar" accept="image/*">            <img class="avatar">
 
             <button id="submit-button">Update Profile</button>
         </form>

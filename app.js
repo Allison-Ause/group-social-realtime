@@ -23,7 +23,6 @@ async function handlePageLoad() {
 
     onComment(comment => {
         comments.unshift(comment);
-        console.log(comment);
         display();
     });
 
