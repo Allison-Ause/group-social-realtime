@@ -15,8 +15,8 @@ export default function createProfile(form, { handleUpdateProfile }) {
 
         const formData = new FormData(form);
         handleUpdateProfile(
-            formData.get('user-name'), //= 
-            formData.get('avatar') //= imageFile
+            formData.get('user-name'),  
+            formData.get('avatar') 
         );
 
     });

@@ -54,8 +54,3 @@ function display() {
 
 handlePageLoad();
 
-
-
-
-// move user styling to main
-// style cat cards so avatar+username are together & cute

@@ -5,8 +5,6 @@ export default function createCats(root, { handleAddComment }) {
         root.innerHTML = '';
 
         for (const cat of cats) {
-            // const li = document.createElement('li');
-            //const li = Cat({ cat, profile, comments, user, handleAddComment });
             const li = Cat({ cat, profile, comments, user, handleAddComment });
             root.append(li);
         }

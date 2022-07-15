@@ -18,6 +18,12 @@ header {
     background-color: var(--header-background);
 }
 
+
+#lead-image {
+    height: 105px;
+    margin-left: 45px;
+}
+
 header .avatar {
     width: 40px;
     height: 40px;

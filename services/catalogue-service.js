@@ -45,16 +45,16 @@ export function onComment(listener) {
 
 
 export async function addComment(content, user, cat) {
-    const response = await client //do we need this + cat, user parameters?)
+    const response = await client 
         .from('comments')
         .insert({
-            user_id: user.id,   //believed to be solved by onComment getIds
+            user_id: user.id, 
             cat_id: cat.id,
             content
         })
         .single();   
     
-    return checkResponse(response); //do we need this?
+    return checkResponse(response);
 }
 
 

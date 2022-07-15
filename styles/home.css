@@ -27,7 +27,6 @@ header h1 {
 #cat-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    /* grid-auto-rows: 350px; */
     gap: 30px;
     border: solid 15px grey;
     padding: 15px;
