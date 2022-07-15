@@ -12,11 +12,25 @@ body {
 }
 
 header {
-    position: sticky;
     top: 0;
     display: flex;
     align-items: center;
     background-color: var(--header-background);
+}
+
+
+#lead-image {
+    height: 105px;
+    margin-left: 45px;
+}
+
+header .avatar {
+    width: 40px;
+    height: 40px;
+    flex-grow: 2;
+    margin-right: 20px;
+    margin-left: auto;
+    display: grid;
 }
 
 #user {
